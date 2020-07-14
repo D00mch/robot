@@ -4,7 +4,7 @@ A Clojure library designed to simplify using java.awt for handling desctop manip
 
 [![Clojars Project](https://img.shields.io/clojars/v/robot.svg)](https://clojars.org/robot)
 
-<img src="https://github.com/Liverm0r/robot/blob/master/resources/theme.gif" alt="alt text" width="500" height="312">
+<img src="https://github.com/Liverm0r/robot/blob/master/images/theme.gif" alt="alt text" width="500" height="312">
 
 ### Keyboard
 ```clojure
