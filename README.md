@@ -1,6 +1,7 @@
 # robot
 
-A Clojure library designed to simplify using java.awt for handling desctop manipulation commands
+A Clojure library designed to simplify using java.awt for handling desktop manipulation commands.  
+For example, I use robot to change theme in apps: 
 
 [![Clojars Project](https://img.shields.io/clojars/v/robot.svg)](https://clojars.org/robot)
 
@@ -8,7 +9,6 @@ A Clojure library designed to simplify using java.awt for handling desctop manip
 
 ### Keyboard
 ```clojure
-(require '(robot.core))
 (require '[robot.core :as r])
 
 ;; simulate pressing a single key 
@@ -62,7 +62,7 @@ A Clojure library designed to simplify using java.awt for handling desctop manip
 
 ## Examples
 
-[Script](https://github.com/Liverm0r/dotfiles/blob/master/clj_scripts/trutenko/src/trutenko/core.clj) to notify developer about standup in Slack
+[Script](https://github.com/Liverm0r/dotfiles/blob/master/clj_scripts/trutenko/src/trutenko/core.clj) to notify developer about standup in Slack  
 [Script](https://github.com/Liverm0r/dotfiles/blob/master/clj_scripts/theme/src/theme/core.clj) to change theme (vim, emacs, chrome, slack, osx, telegram)
 
 ## License
