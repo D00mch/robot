@@ -11,13 +11,13 @@ A Clojure library designed to simplify using java.awt for handling desctop manip
 (require '(robot.core))
 (require '[robot.core :as r])
 
-;; simulate press a single key 
+;; simulate pressing a single key 
 (r/type! :shift)
 
 ;; simulate pressing hot keys
 (r/hot-keys! [:cmd :space])
 
-;; type whole text from keyboard 
+;; type whole text 
 (r/type-text! "typing this letters")
 ```
 
@@ -41,8 +41,10 @@ A Clojure library designed to simplify using java.awt for handling desctop manip
 
 ### Clipboard
 ```clojure
+;; put into clipboard
 (r/clipboard-put "text to put in clipboard")
 
+;; get from clipboard
 (r/clipboard-get-string) ;; => text to put in clipboard
 ```
 
