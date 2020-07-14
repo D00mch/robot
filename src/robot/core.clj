@@ -40,7 +40,7 @@
 ;; KEYBOARD-API
 (def ^Robot robot (Robot.))
 
-(defn delay [time]
+(defn sleep [time]
   (.delay robot 300))
 
 (defn- keys->key-events [keys]

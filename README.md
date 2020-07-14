@@ -2,7 +2,9 @@
 
 A Clojure library designed to simplify using java.awt for handling desctop manipulation commands
 
-## Usage
+[![Clojars Project](https://img.shields.io/clojars/v/robot.svg)](https://clojars.org/robot)
+
+<img src="https://github.com/Liverm0r/robot/blob/master/resources/theme.gif" alt="alt text" width="500" height="312">
 
 ### Keyboard
 ```clojure
@@ -46,8 +48,8 @@ A Clojure library designed to simplify using java.awt for handling desctop manip
 
 ### Delay
 ```clojure
-;; you can delay, which will just invoke thread/sleep under the hood
-(r/delay 50)
+;; you can delay, which will use thread/sleep under the hood
+(r/sleep 50)
 
 ;; you can also pass delays inside typing functions
 (r/type! :k 50) ;; passing millis between press and release
@@ -55,6 +57,10 @@ A Clojure library designed to simplify using java.awt for handling desctop manip
 ;; same with mouse 
 (r/mouse-click! 100) 
 ```
+
+## Examples
+
+[Script](https://github.com/Liverm0r/dotfiles/blob/master/clj_scripts/trutenko/src/trutenko/core.clj) to notify developer about standup in Slack
 
 ## License
 
