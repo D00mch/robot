@@ -98,7 +98,7 @@
 
 (def ^Clipboard clipboard (.. Toolkit getDefaultToolkit getSystemClipboard))
 
-(defn clipboard-put [^String s]
+(defn clipboard-put! [^String s]
   (.setContents clipboard (StringSelection. s) nil))
 
 (defn clipboard-get-string "returns string from buffer or nil" []

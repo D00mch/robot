@@ -1,19 +1,21 @@
-# Introduction to robot
+# robot
 
-A Clojure library designed to simplify using java.awt for handling desctop manipulation commands
+A Clojure library designed to simplify using java.awt for handling desktop manipulation commands.  
+For example, I use robot to change theme in apps: 
+
+<img src="https://github.com/Liverm0r/robot/blob/master/images/theme.gif" alt="alt text" width="500" height="312">
 
 ### Keyboard
 ```clojure
-(require '(robot.core))
 (require '[robot.core :as r])
 
-;; simulate press a single key 
+;; simulate pressing a single key 
 (r/type! :shift)
 
 ;; simulate pressing hot keys
 (r/hot-keys! [:cmd :space])
 
-;; type whole text from keyboard 
+;; type whole text 
 (r/type-text! "typing this letters")
 ```
 
@@ -37,8 +39,10 @@ A Clojure library designed to simplify using java.awt for handling desctop manip
 
 ### Clipboard
 ```clojure
-(r/clipboard-put "text to put in clipboard")
+;; put into clipboard
+(r/clipboard-put! "text to put in clipboard")
 
+;; get from clipboard
 (r/clipboard-get-string) ;; => text to put in clipboard
 ```
 
@@ -56,4 +60,5 @@ A Clojure library designed to simplify using java.awt for handling desctop manip
 
 ## Examples
 
-[Script](https://github.com/Liverm0r/dotfiles/blob/master/clj_scripts/trutenko/src/trutenko/core.clj) to notify developer about standup in Slack
+[Script](https://github.com/Liverm0r/dotfiles/blob/master/clj_scripts/trutenko/src/trutenko/core.clj) to notify developer about standup in Slack  
+[Script](https://github.com/Liverm0r/dotfiles/blob/master/clj_scripts/theme/src/theme/core.clj) to change theme (vim, emacs, chrome, slack, osx, telegram)

@@ -42,7 +42,7 @@ For example, I use robot to change theme in apps:
 ### Clipboard
 ```clojure
 ;; put into clipboard
-(r/clipboard-put "text to put in clipboard")
+(r/clipboard-put! "text to put in clipboard")
 
 ;; get from clipboard
 (r/clipboard-get-string) ;; => text to put in clipboard
