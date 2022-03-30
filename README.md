@@ -60,6 +60,28 @@ For example, I use robot to change theme in apps:
 (r/mouse-click! 100) 
 ```
 
+### Java interop
+```clojure
+(import java.awt.event.KeyEvent)
+
+(r/type! KeyEvent/VK_A)
+
+(r/hot-keys! [KeyEvent/VK_ALT KeyEvent/VK_SPACE])
+```
+
+## Finding particular key
+There is a function that returns a map with key-codes to key-names:
+```clojure
+(r/get-my-keyboard)
+;; =>
+{3 "⎋", 8 "⌫", 9 "⇥", 10 "⏎", 12 "⌧", 16 "⇧", 17 "⌃", 18 "⌥" ... }
+````
+There is also a function to get the name of the particular key-code:
+```clojure
+(r/get-key-name 61440)
+;; => "F13"
+```
+
 ## Examples
 
 [Script](https://github.com/Liverm0r/dotfiles/blob/master/clj_scripts/trutenko/src/trutenko/core.clj) to notify developer about standup in Slack  

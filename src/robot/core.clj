@@ -25,7 +25,8 @@
    :esc   KeyEvent/VK_ESCAPE
    :enter KeyEvent/VK_ENTER
    :back  KeyEvent/VK_BACK_SPACE
-   :bq    KeyEvent/VK_BACK_QUOTE
+   :bq    KeyEvent/VK_BACK_QUOTE                            ; back quote
+   :quote KeyEvent/VK_QUOTE
    :tab   KeyEvent/VK_TAB
    :caps  KeyEvent/VK_CAPS_LOCK
    :ctrl  KeyEvent/VK_CONTROL
@@ -109,3 +110,15 @@
       (try
         (.getTransferData content DataFlavor/stringFlavor)
         (catch Exception e (.printStackTrace e))))))
+
+;; INFO
+
+(defn get-key-name [i]
+  (KeyEvent/getKeyText i))
+
+(defn get-my-keyboard []
+  (into (sorted-map)
+        (for [i (range 100000)
+              :let [text (get-key-name i)]
+              :when (not (.contains ^String text "Unknown keyCode: "))]
+          [i text])))
