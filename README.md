@@ -45,7 +45,7 @@ For example, I use robot to change theme in apps:
 (r/clipboard-put! "text to put in clipboard")
 
 ;; get from clipboard
-(r/clipboard-get-string) ;; => text to put in clipboard
+(r/clipboard-get-string) ;; => text that was in the clipboard
 ```
 
 ### Delay
@@ -89,7 +89,7 @@ There is also a function to get the name of the particular key-code:
 
 ## License
 
-Copyright © 2020 FIXME
+Copyright © 2020 Artur Dumchev
 
 This program and the accompanying materials are made available under the
 terms of the Eclipse Public License 2.0 which is available at
