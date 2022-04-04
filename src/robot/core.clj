@@ -1,11 +1,10 @@
 (ns robot.core
   (:gen-class)
-  (:require [clojure.string :as str]
-            [clojure.java.shell :use [sh]])
-  (:import (java.awt Robot Toolkit MouseInfo)
-           (java.awt.datatransfer Clipboard StringSelection
-                                  Transferable DataFlavor)
-           (java.awt.event KeyEvent InputEvent)))
+  (:require [clojure.java.shell :use [sh]])
+  (:import (java.awt MouseInfo Robot Toolkit)
+           (java.awt.datatransfer Clipboard DataFlavor
+                                  StringSelection Transferable)
+           (java.awt.event InputEvent KeyEvent)))
 
 (comment
   (set! *warn-on-reflection* true))
@@ -34,15 +33,13 @@
    :f1    KeyEvent/VK_F1 :f2 KeyEvent/VK_F2 :f3 KeyEvent/VK_F3 :f4 KeyEvent/VK_F4
    :f5    KeyEvent/VK_F5 :f6 KeyEvent/VK_F6 :f7 KeyEvent/VK_F7 :f8 KeyEvent/VK_F8
    :f9    KeyEvent/VK_F9 :f10 KeyEvent/VK_F10 :f11 KeyEvent/VK_F11 :f12 KeyEvent/VK_F12
-   :left  KeyEvent/VK_LEFT :right KeyEvent/VK_R :up KeyEvent/VK_UP :down KeyEvent/VK_DOWN
-   })
-
+   :left  KeyEvent/VK_LEFT :right KeyEvent/VK_R :up KeyEvent/VK_UP :down KeyEvent/VK_DOWN})
 
 ;; KEYBOARD-API
 (def ^Robot robot (Robot.))
 
-(defn sleep [time]
-  (.delay robot 300))
+(defn sleep [millis]
+  (.delay robot millis))
 
 (defn- keys->key-events [keys]
   (map #(% key-events-map) keys))
@@ -93,7 +90,6 @@
 (defn scroll! [i] (.mouseWheel ^Robot robot i))
 
 (defn pixel-color [x y] (.getPixelColor robot x y))
-
 
 ;; CLIPBOARD
 
