@@ -84,8 +84,9 @@ There is also a function to get the name of the particular key-code:
 
 ## Examples
 
-[Script](https://github.com/Liverm0r/dotfiles/blob/master/clj_scripts/trutenko/src/trutenko/core.clj) to notify developer about standup in Slack  
-[Script](https://github.com/Liverm0r/dotfiles/blob/master/clj_scripts/theme/src/theme/core.clj) to change theme (vim, emacs, chrome, slack, osx, telegram)
+- [Article](https://github.com/D00mch/working-script) about writing a clojure script to open docker and two terminal windows
+- [Script](https://github.com/Liverm0r/dotfiles/blob/master/clj_scripts/trutenko/src/trutenko/core.clj) to notify developer about standup in Slack  
+- [Script](https://github.com/Liverm0r/dotfiles/blob/master/clj_scripts/theme/src/theme/core.clj) to change theme (vim, emacs, chrome, slack, osx, telegram)
 
 ## License
 
