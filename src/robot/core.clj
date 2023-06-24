@@ -89,7 +89,13 @@
 
 (defn scroll! [i] (.mouseWheel ^Robot robot i))
 
-(defn pixel-color [x y] (.getPixelColor robot x y))
+(defn pixel-color
+  ([]
+   (pixel-color (mouse-pos)))
+  ([[x y]]
+   (pixel-color x y))
+  ([x y]
+   (.getPixelColor robot x y)))
 
 ;; CLIPBOARD
 
