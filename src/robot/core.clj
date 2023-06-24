@@ -1,7 +1,7 @@
 (ns robot.core
   (:gen-class)
   (:require [clojure.java.shell :use [sh]])
-  (:import (java.awt MouseInfo Robot Toolkit)
+  (:import (java.awt MouseInfo Robot Toolkit Rectangle)
            (java.awt.datatransfer Clipboard DataFlavor
                                   StringSelection Transferable)
            (java.awt.event InputEvent KeyEvent)))
@@ -89,13 +89,50 @@
 
 (defn scroll! [i] (.mouseWheel ^Robot robot i))
 
+;; COLORS
+
 (defn pixel-color
+  "Don't use this function in loops, it's slow.
+  If you need range, use `pixel-rgb-range`"
   ([]
    (pixel-color (mouse-pos)))
   ([[x y]]
    (pixel-color x y))
   ([x y]
    (.getPixelColor robot x y)))
+
+(defn pixel-argb-int
+  "Don't use this function in loops, it's slow.
+  If you need range, use `pixel-rgb-range(-ver|-hor)`"
+  [x y]
+  (.getRGB (.createScreenCapture robot (Rectangle. x y 1 1)) 0 0))
+
+(defrecord ARGB [alpha red green blue])
+
+(defn int->argb
+  "Get integer argb, retuns ARGB record {:keys [apha red green blue]}
+   Don't use in loops, consider `pixel-rgb-range(-ver|-hor) ` instead."
+  [color-int]
+  (->ARGB (bit-and (bit-shift-right color-int 24) 255)
+          (bit-and (bit-shift-right color-int 16) 255)
+          (bit-and (bit-shift-right color-int 8) 255)
+          (bit-and color-int 255)))
+
+(defn pixel-rgb-range-hor [x y width]
+  (let [rec (.createScreenCapture robot (Rectangle. x y width 1))]
+    (for [n (range width)]
+      (.getRGB rec n 0))))
+
+(defn pixel-rgb-range-ver [x y height]
+  (let [rec (.createScreenCapture robot (Rectangle. x y 1 height))]
+    (for [n (range height)]
+      (.getRGB rec 0 n))))
+
+(defn pixel-rgb-range [x y width height]
+  (let [rec (.createScreenCapture robot (Rectangle. x y width height))]
+    (for [yn (range height)]
+      (for [xn (range width)]
+        (.getRGB rec xn yn)))))
 
 ;; CLIPBOARD
 
