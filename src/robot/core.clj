@@ -5,6 +5,7 @@
            (java.awt.datatransfer Clipboard DataFlavor
                                   StringSelection Transferable)
            (java.awt.event InputEvent KeyEvent)
+           (java.awt.im InputContext)
            [java.net URI]))
 
 (comment
@@ -93,6 +94,9 @@
   (let [screen (.. Toolkit getDefaultToolkit getScreenSize)]
     [(.width screen)
      (.height screen)]))
+
+(defn get-current-layout []
+  (.getLocale (InputContext/getInstance)))
 
 ;; MOUSE
 
