@@ -11,30 +11,35 @@
   (set! *warn-on-reflection* true))
 
 (def ^{:private true} key-events-map
-  {:a     KeyEvent/VK_A :b KeyEvent/VK_B :c KeyEvent/VK_C :d KeyEvent/VK_D :e KeyEvent/VK_E
-   :f     KeyEvent/VK_F :g KeyEvent/VK_G :h KeyEvent/VK_H :i KeyEvent/VK_I :j KeyEvent/VK_J
-   :k     KeyEvent/VK_K :l KeyEvent/VK_L :m KeyEvent/VK_M :n KeyEvent/VK_N :o KeyEvent/VK_O
-   :p     KeyEvent/VK_P :q KeyEvent/VK_Q :r KeyEvent/VK_R :s KeyEvent/VK_S :t KeyEvent/VK_T
-   :u     KeyEvent/VK_U :v KeyEvent/VK_V :w KeyEvent/VK_W :x KeyEvent/VK_X :y KeyEvent/VK_Y
-   :z     KeyEvent/VK_Z
-   :1     KeyEvent/VK_1 :2 KeyEvent/VK_2 :3 KeyEvent/VK_3 :4 KeyEvent/VK_4 :5 KeyEvent/VK_5
-   :6     KeyEvent/VK_6 :7 KeyEvent/VK_7 :8 KeyEvent/VK_8 :9 KeyEvent/VK_9 :0 KeyEvent/VK_0
-   :cmd   KeyEvent/VK_META :meta KeyEvent/VK_META
-   :shift KeyEvent/VK_SHIFT
-   :alt   KeyEvent/VK_ALT
-   :esc   KeyEvent/VK_ESCAPE
-   :enter KeyEvent/VK_ENTER
-   :back  KeyEvent/VK_BACK_SPACE
-   :bq    KeyEvent/VK_BACK_QUOTE                            ; back quote
-   :quote KeyEvent/VK_QUOTE
-   :tab   KeyEvent/VK_TAB
-   :caps  KeyEvent/VK_CAPS_LOCK
-   :ctrl  KeyEvent/VK_CONTROL
-   :space KeyEvent/VK_SPACE
-   :f1    KeyEvent/VK_F1 :f2 KeyEvent/VK_F2 :f3 KeyEvent/VK_F3 :f4 KeyEvent/VK_F4
-   :f5    KeyEvent/VK_F5 :f6 KeyEvent/VK_F6 :f7 KeyEvent/VK_F7 :f8 KeyEvent/VK_F8
-   :f9    KeyEvent/VK_F9 :f10 KeyEvent/VK_F10 :f11 KeyEvent/VK_F11 :f12 KeyEvent/VK_F12
-   :left  KeyEvent/VK_LEFT :right KeyEvent/VK_R :up KeyEvent/VK_UP :down KeyEvent/VK_DOWN})
+  {:a         KeyEvent/VK_A    :b KeyEvent/VK_B     :c KeyEvent/VK_C :d KeyEvent/VK_D :e KeyEvent/VK_E
+   :f         KeyEvent/VK_F    :g KeyEvent/VK_G     :h KeyEvent/VK_H :i KeyEvent/VK_I :j KeyEvent/VK_J
+   :k         KeyEvent/VK_K    :l KeyEvent/VK_L     :m KeyEvent/VK_M :n KeyEvent/VK_N :o KeyEvent/VK_O
+   :p         KeyEvent/VK_P    :q KeyEvent/VK_Q     :r KeyEvent/VK_R :s KeyEvent/VK_S :t KeyEvent/VK_T
+   :u         KeyEvent/VK_U    :v KeyEvent/VK_V     :w KeyEvent/VK_W :x KeyEvent/VK_X :y KeyEvent/VK_Y
+   :z         KeyEvent/VK_Z
+   :1         KeyEvent/VK_1    :2 KeyEvent/VK_2     :3 KeyEvent/VK_3 :4 KeyEvent/VK_4 :5 KeyEvent/VK_5
+   :6         KeyEvent/VK_6    :7 KeyEvent/VK_7     :8 KeyEvent/VK_8 :9 KeyEvent/VK_9 :0 KeyEvent/VK_0
+   :cmd       KeyEvent/VK_META :meta KeyEvent/VK_META
+   :shift     KeyEvent/VK_SHIFT
+   :alt       KeyEvent/VK_ALT
+   :esc       KeyEvent/VK_ESCAPE
+   :enter     KeyEvent/VK_ENTER
+   :back      KeyEvent/VK_BACK_SPACE
+   :bq        KeyEvent/VK_BACK_QUOTE                            ; back quote
+   :quote     KeyEvent/VK_QUOTE
+   :tab       KeyEvent/VK_TAB
+   :caps      KeyEvent/VK_CAPS_LOCK
+   :ctrl      KeyEvent/VK_CONTROL
+   :space     KeyEvent/VK_SPACE
+   :win       KeyEvent/VK_WINDOWS
+   :page-down KeyEvent/VK_PAGE_DOWN 
+   :page-up   KeyEvent/VK_PAGE_UP 
+   :home      KeyEvent/VK_HOME
+   :end       KeyEvent/VK_END
+   :f1        KeyEvent/VK_F1   :f2 KeyEvent/VK_F2   :f3 KeyEvent/VK_F3   :f4 KeyEvent/VK_F4
+   :f5        KeyEvent/VK_F5   :f6 KeyEvent/VK_F6   :f7 KeyEvent/VK_F7   :f8 KeyEvent/VK_F8
+   :f9        KeyEvent/VK_F9   :f10 KeyEvent/VK_F10 :f11 KeyEvent/VK_F11 :f12 KeyEvent/VK_F12
+   :left      KeyEvent/VK_LEFT :right KeyEvent/VK_R :up KeyEvent/VK_UP   :down KeyEvent/VK_DOWN})
 
 ;; KEYBOARD-API
 (def ^Robot robot (Robot.))
