@@ -47,8 +47,8 @@
 (defn type! [key & [delay]]
   (let [key (if (number? key) key (key key-events-map))]
     (doto robot
-      (.delay (or delay 40))
       (.keyPress key)
+      (.delay (or delay 40))
       (.keyRelease key))))
 
 (defn hot-keys! "takes seq of ints (KeyEvent) or :keys"
