@@ -1,10 +1,11 @@
 (ns robot.core
   (:gen-class)
   (:require [clojure.java.shell :use [sh]])
-  (:import (java.awt MouseInfo Robot Toolkit Rectangle)
+  (:import (java.awt MouseInfo Robot Toolkit Rectangle Desktop)
            (java.awt.datatransfer Clipboard DataFlavor
                                   StringSelection Transferable)
-           (java.awt.event InputEvent KeyEvent)))
+           (java.awt.event InputEvent KeyEvent)
+           [java.net URI]))
 
 (comment
   (set! *warn-on-reflection* true))
@@ -168,3 +169,8 @@
       (try
         (.getTransferData content DataFlavor/stringFlavor)
         (catch Exception e (.printStackTrace e))))))
+
+;; LAUNCH
+
+(defn launch-uri! [uri-str]
+  (.browse (Desktop/getDesktop) (URI. uri-str)))
