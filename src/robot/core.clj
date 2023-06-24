@@ -71,6 +71,23 @@
       (.delay (or delay-before-release 0))
       (.keyRelease code))))
 
+;; INFO
+
+(defn get-key-name [i]
+  (KeyEvent/getKeyText i))
+
+(defn get-my-keyboard []
+  (into (sorted-map)
+        (for [i (range 100000)
+              :let [text (get-key-name i)]
+              :when (not (.contains ^String text "Unknown keyCode: "))]
+          [i text])))
+
+(defn get-screen-size []
+  (let [screen (.. Toolkit getDefaultToolkit getScreenSize)]
+    [(.width screen)
+     (.height screen)]))
+
 ;; MOUSE
 
 (defn mouse-click! [& [delay]]
@@ -82,6 +99,8 @@
 (defn mouse-pos "returns mouse position [x, y]" []
   (let [mouse-info (.. MouseInfo getPointerInfo getLocation)]
     [(. mouse-info x) (. mouse-info y)]))
+
+(def get-mouse-pos mouse-pos)
 
 (defn mouse-move!
   ([[x y]] (mouse-move! x y))
@@ -149,15 +168,3 @@
       (try
         (.getTransferData content DataFlavor/stringFlavor)
         (catch Exception e (.printStackTrace e))))))
-
-;; INFO
-
-(defn get-key-name [i]
-  (KeyEvent/getKeyText i))
-
-(defn get-my-keyboard []
-  (into (sorted-map)
-        (for [i (range 100000)
-              :let [text (get-key-name i)]
-              :when (not (.contains ^String text "Unknown keyCode: "))]
-          [i text])))
