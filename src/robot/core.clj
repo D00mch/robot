@@ -1,12 +1,23 @@
 (ns robot.core
   (:gen-class)
-  (:require [clojure.java.shell :use [sh]])
-  (:import (java.awt MouseInfo Robot Toolkit Rectangle Desktop)
-           (java.awt.datatransfer Clipboard DataFlavor
-                                  StringSelection Transferable)
-           (java.awt.event InputEvent KeyEvent)
-           (java.awt.im InputContext)
-           [java.net URI]))
+  (:require
+   [clojure.java.shell :use [sh]]
+   [clojure.string :as str])
+  (:import
+   (java.awt
+    Desktop
+    MouseInfo
+    Rectangle
+    Robot
+    Toolkit)
+   (java.awt.datatransfer
+    Clipboard
+    DataFlavor
+    StringSelection
+    Transferable)
+   (java.awt.event InputEvent KeyEvent)
+   (java.awt.im InputContext)
+   [java.net URI]))
 
 (comment
   (set! *warn-on-reflection* true))

@@ -7,6 +7,16 @@ For example, I use robot to change theme in apps:
 
 <img src="https://github.com/Liverm0r/robot/blob/master/images/theme.gif" alt="alt text" width="500" height="312">
 
+### Launching apps
+
+```clj
+;; Open google.com in default browser
+(r/launch-uri! "https://google.com")
+
+;; Open default email app
+(r/launch-uri! "mailto:arturdumchev@gmail.com")
+```
+
 ### Keyboard
 ```clojure
 (require '[robot.core :as r])
@@ -34,9 +44,6 @@ For example, I use robot to change theme in apps:
 
 ;; simulate mouse wheel
 (r/scroll! 10)
-
-;; get pixel color at position
-(pixel-color 280 1200)
 ```
 
 ### Clipboard
@@ -56,8 +63,30 @@ For example, I use robot to change theme in apps:
 ;; you can also pass delays inside typing functions
 (r/type! :k 50) ;; passing millis between press and release
 
-;; same with mouse 
+;; the same with mouse
 (r/mouse-click! 100) 
+```
+
+### Pixel colors
+
+```clojure
+(def x 280)
+(def y 1200)
+(def width 60)
+
+;; get pixel color as argb integer
+(pixel-argb-int x y)        ;=> -16777216 
+
+(r/int->argb -16777216)     ;=> {:alpha 255, :red 0, :green 0, :blue 0}
+(pixel-argb x y)            ;=> {:alpha 255, :red 0, :green 0, :blue 0} 
+
+;; get pixel color as java.awt.Color 
+(pixel-color x y)
+
+;; get list of pixel corols as {:keys [alpha red green blue]}
+(r/pixel-rgb-range-hor x y width r/int->argb)
+
+(r/pixel-rgb-range x y 3 2) ;=> ((-11332 -11332 -11332) (-11332 -11332 -11332))
 ```
 
 ### Java interop
