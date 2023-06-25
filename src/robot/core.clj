@@ -147,21 +147,45 @@
           (bit-and (bit-shift-right color-int 8) 255)
           (bit-and color-int 255)))
 
-(defn pixel-rgb-range-hor [x y width]
-  (let [rec (.createScreenCapture robot (Rectangle. x y width 1))]
-    (for [n (range width)]
-      (.getRGB rec n 0))))
+(defn pixel-argb
+  "Don't use this function in loops, it's slow.
+  If you need range, use `pixel-rgb-range(-ver|-hor)`"
+  ([]
+   (pixel-argb (mouse-pos)))
+  ([[x y]]
+   (pixel-argb x y))
+  ([x y]
+   (int->argb (pixel-argb-int x y))))
 
-(defn pixel-rgb-range-ver [x y height]
-  (let [rec (.createScreenCapture robot (Rectangle. x y 1 height))]
-    (for [n (range height)]
-      (.getRGB rec 0 n))))
+(defn pixel-rgb-range
+  "Pass `map-fn` to modify each pixel value (argb by default) "
+  ([x y width height]
+   (pixel-rgb-range x y width height identity))
+  ([x y width height map-fn]
+   (let [rec (.createScreenCapture robot (Rectangle. x y width height))]
+     (for [yn (range height)]
+       (for [xn (range width)]
+         (map-fn (.getRGB rec xn yn)))))))
 
-(defn pixel-rgb-range [x y width height]
-  (let [rec (.createScreenCapture robot (Rectangle. x y width height))]
-    (for [yn (range height)]
-      (for [xn (range width)]
-        (.getRGB rec xn yn)))))
+(defn pixel-rgb-range-hor
+  "Horizontal range. See `pixel-rgb-range` docs"
+  ([[x y] width]
+   (pixel-rgb-range-hor x y width identity))
+  ([x y width]
+   (pixel-rgb-range-hor x y width identity))
+  ([x y width map-fn]
+   (first (pixel-rgb-range x y width 1 map-fn))))
+
+(defn pixel-rgb-range-ver
+  "Horizontal range. See `pixel-rgb-range` docs"
+  ([[x y] height]
+   (pixel-rgb-range-ver x y height identity))
+  ([x y height]
+   (pixel-rgb-range-ver x y height identity))
+  ([x y height map-fn]
+   (let [rec (.createScreenCapture robot (Rectangle. x y 1 height))]
+     (for [n (range height)]
+       (map-fn (.getRGB rec 0 n))))))
 
 ;; CLIPBOARD
 
