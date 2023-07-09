@@ -82,12 +82,34 @@
 (defn type-text! [^String s & [delay-before-press delay-before-release]]
   (doseq [byte (.getBytes s)
           :let [code (int byte)
-                code (if (< 96 code 123) (- code 32) code)]]
-    (doto robot
-      (.delay (or delay-before-press 70))
-      (.keyPress code)
-      (.delay (or delay-before-release 0))
-      (.keyRelease code))))
+                code (cond
+                       (< 96 code 123) (- code 32)
+                       :else           code)]]
+    (case code
+      33 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_1])
+      34 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_QUOTE])
+      35 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_3])
+      36 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_4])
+      37 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_5])
+      38 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_7])
+      39 (type! KeyEvent/VK_QUOTE)
+      40 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_9])
+      41 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_0])
+      42 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_8])
+      91 (type! KeyEvent/VK_OPEN_BRACKET)
+      93 (type! KeyEvent/VK_CLOSE_BRACKET)
+      94 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_6])
+      96 (type! KeyEvent/VK_BACK_QUOTE)
+      58 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_SEMICOLON])
+      64 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_2])
+      123 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_OPEN_BRACKET])
+      125 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_CLOSE_BRACKET])
+      126 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_BACK_QUOTE])
+      (doto robot
+        (.delay (or delay-before-press 70))
+        (.keyPress code)
+        (.delay (or delay-before-release 0))
+        (.keyRelease code)))))
 
 ;; INFO
 
