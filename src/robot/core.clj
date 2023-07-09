@@ -36,7 +36,7 @@
    :alt       KeyEvent/VK_ALT
    :esc       KeyEvent/VK_ESCAPE
    :enter     KeyEvent/VK_ENTER
-   :back      KeyEvent/VK_BACK_SPACE
+   :back      KeyEvent/VK_BACK_SPACE                :backspace KeyEvent/VK_BACK_SPACE
    :bq        KeyEvent/VK_BACK_QUOTE                            ; back quote
    :quote     KeyEvent/VK_QUOTE
    :tab       KeyEvent/VK_TAB
@@ -111,11 +111,19 @@
 
 ;; MOUSE
 
-(defn mouse-click! [& [delay]]
-  (doto robot
-    (.mousePress InputEvent/BUTTON1_DOWN_MASK)
-    (.delay (or delay 70))
-    (.mouseRelease InputEvent/BUTTON1_DOWN_MASK)))
+(defn mouse-click!
+  "mouse-button: #{:mouse1, :mouse2, :mouse3}"
+  ([]
+   (mouse-click! :mouse1))
+  ([mouse-button & [delay]]
+   (let [btn (case mouse-button
+               :mouse1 InputEvent/BUTTON1_DOWN_MASK
+               :mouse2 InputEvent/BUTTON2_DOWN_MASK
+               :mouse3 InputEvent/BUTTON3_DOWN_MASK)]
+     (doto robot
+       (.mousePress btn)
+       (.delay (or delay 70))
+       (.mouseRelease btn)))))
 
 (defn mouse-pos "returns mouse position [x, y]" []
   (let [mouse-info (.. MouseInfo getPointerInfo getLocation)]
