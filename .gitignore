@@ -12,3 +12,10 @@ pom.xml.asc
 .hg/
 .idea
 robot.iml
+
+# Lint
+.clj-kondo/*
+!.clj-kondo/config.edn
+.calva/output-window/
+.lsp/.cache/
+.lsp/
