@@ -233,10 +233,19 @@
 (def ^Clipboard clipboard (.. Toolkit getDefaultToolkit getSystemClipboard))
 
 (defn clipboard-put! [^String s]
-  (.setContents clipboard (StringSelection. s) nil))
+  (try
+    (.setContents clipboard (StringSelection. s) nil)
+    (catch Exception e
+      (sleep 20)
+      (.setContents clipboard (StringSelection. s) nil))))
 
-(defn clipboard-get-string "returns string from buffer or nil" []
-  (let [^Transferable content (.getContents clipboard nil)
+(defn clipboard-get-string
+  "returns string from buffer or nil"
+  []
+  (let [^Transferable content (try (.getContents clipboard nil)
+                                   (catch Throwable e
+                                     (sleep 20)
+                                     (.getContents clipboard nil)))
         has-text              (and (some? content)
                                    (.isDataFlavorSupported content DataFlavor/stringFlavor))]
     (when has-text
