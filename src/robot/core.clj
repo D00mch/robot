@@ -101,6 +101,7 @@
       94 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_6])
       96 (type! KeyEvent/VK_BACK_QUOTE)
       58 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_SEMICOLON])
+      63 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_SLASH])
       64 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_2])
       123 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_OPEN_BRACKET])
       125 (hot-keys! [KeyEvent/VK_SHIFT KeyEvent/VK_CLOSE_BRACKET])
